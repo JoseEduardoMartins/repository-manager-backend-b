@@ -30,7 +30,7 @@ cd repository-manager-backend-b
 5. Inicie o microserviço:
 
 ```bash
-npm run dev
+npm run start:dev
 ```
 
 O servidor estará disponível em http://localhost:3000.
