@@ -1,8 +1,9 @@
 import axios from "axios";
-import environment from "./environment";
+import { github } from "./environment";
 
 const http = axios.create({
-  baseURL: "https://api.github.com",
+  baseURL: github.baseURL,
+  timeout: 1000,
 });
 
 export default http;
