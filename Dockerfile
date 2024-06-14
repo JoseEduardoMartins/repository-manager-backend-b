@@ -1,9 +1,20 @@
-FROM node:12.14.0-alpine3.11
+# Use uma imagem Node oficial como base
+FROM node:14
 
-RUN apk add --no-cache bash git
+# Crie um diretório de trabalho
+WORKDIR /app
 
-RUN touch /home/eduardo/.bashrc | echo "PS1='\w\$ '" >> /home/eduardo/.bashrc
+# Copie o package.json e o package-lock.json
+COPY package*.json ./
 
-USER eduardo
+# Instale as dependências
+RUN npm install
 
-WORKDIR /home/eduardo/repository-manager-backend-b
+# Copie o restante do código da aplicação
+COPY . .
+
+# Exponha a porta que a aplicação utiliza
+EXPOSE 3001
+
+# Comando para iniciar a aplicação
+CMD ["npm", "run", "start:dev"]
