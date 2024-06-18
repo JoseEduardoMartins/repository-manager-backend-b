@@ -7,7 +7,7 @@ export const server = {
 };
 
 export const github = {
-  baseURL: process.env.GITHUB_BASE_URL || "",
+  baseURL: process.env.GITHUB_BASE_URL || "https://api.github.com",
 };
 
 export default { server, github };

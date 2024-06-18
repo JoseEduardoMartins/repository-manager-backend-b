@@ -2,13 +2,22 @@ import app from "./app";
 import debug from "debug";
 import http from "http";
 import { environment } from "./config";
+import { startRabbitmqService } from "./services/rabbitmq.service";
 
 const port = environment.server.port;
 
 app.set("port", port);
 const server = http.createServer(app);
 
-server.listen(port);
+server.listen(port, () => {
+  startRabbitmqService()
+    .then(() => {
+      console.log("RabbitMQ consumer started");
+    })
+    .catch((err) => {
+      console.error("Failed to start RabbitMQ consumer", err);
+    });
+});
 server.on("error", onError);
 server.on("listening", onListening);
 console.log(`Api rodando na porta - ${port}`);

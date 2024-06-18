@@ -4,7 +4,8 @@
   "description": "",
   "main": "./src/server.ts",
   "scripts": {
-    "start:dev": "nodemon src/server.ts --exec ts-node"
+    "start:dev": "nodemon src/server.ts --exec ts-node",
+    "start:prod": "tsc node dist/app.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,8 @@
   },
   "homepage": "https://github.com/JoseEduardoMartins/repository-manager-backend-b#readme",
   "dependencies": {
+    "@types/amqplib": "^0.10.5",
+    "amqplib": "^0.10.4",
     "axios": "^1.7.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
